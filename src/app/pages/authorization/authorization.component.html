@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div *ngIf="displayBioInfo">
+            <h2>Bio Metric Status</h2>
+      <hr>
+      <p>Mobile No: {{ bioAuthInfo.mobileNo }} <span *ngIf="bioAuthInfo.mobileNo;">
+        <i style="color: rgb(9, 241, 9);;" class="fa fa-check"></i>
+      </span></p>
+      <p>State ID: {{ bioAuthInfo.stateId }}<span *ngIf="bioAuthInfo.stateId;">
+        <i style="color: rgb(9, 241, 9);;" class="fa fa-check"></i>
+      </span></p>
+      <p>Status: {{ bioAuthInfo.status }}</p>
+      <p>Role: {{ bioAuthInfo.role }}</p>
+      <p>Speech Recognition Data: <span *ngIf="bioAuthInfo.speechData; else waiting">
+        <i style="color: rgb(9, 241, 9);" class="fa fa-check"></i>
+      </span>
+      <ng-template #waiting>
+        <span style="color: lightblue;">Waiting...</span>
+
+      </ng-template>
+    </p>
+      <p>Facial Recognition Data: <span *ngIf="bioAuthInfo.faceData; else waiting">
+          <i style="color: rgb(9, 241, 9);;" class="fa fa-check"></i>
+        </span>
+        <ng-template #waiting>
+          <span style="color: lightblue;">Waiting...</span>
+
+        </ng-template>
+      </p>
+
+
+     
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <h1>{{ title }}</h1>
+  </div>
+  <div class="row justify-content-center">
+    <audio *ngIf="soundBlob" controls>
+      <source [src]="soundBlob" type="audio/webm">
+  </audio>
+
+    <speech-recognition [bioAuthInfo]="bioAuthInfo" (processSpeech)="processSpeechResponse($event)" *ngIf="displaySpeechRecognition"></speech-recognition>
+
+    <voter-verification (voterIsRegistered)="voterVerificationResponse($event)" *ngIf="displayVoterVerification">
+    </voter-verification>
+    <mobile-verification [prereg]="preReg" (mobileVerificationResponse)="mobileVerificationResponse($event)"
+      *ngIf="displayMobileVerification"></mobile-verification>
+    <facial-recognition *ngIf="displayFacialRecognition" [preReg]="preReg"
+      (facialRecognitionResponse)="facialRecognitionResponse($event)"></facial-recognition>
+    <registration [prereg]="preReg" (registrationResponse)="registrationResponse($event)" *ngIf="displayRegistration"></registration>
+    <question-verification [prereg]="preReg" (questionResponse)="questionResponse($event)" *ngIf="displayCreditQuestions">
+    </question-verification>
+
+    <div #alert class="alert alert-warning alert-dismissible fade row " role="alert">
+      <h5 id='notification'></h5>
+      <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong class="notification"></strong>
+    </div>
+
+
+  </div>
+</div>

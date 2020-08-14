@@ -1,0 +1,47 @@
+<form *ngIf="displayForm" [formGroup]="AdminHomeForm">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header ">
+                    <div class="row justify-content-center">
+                        <h2>Administrator Home</h2>
+                    </div>
+                </div>
+                <div class="card-body ">
+                    <div id="card-body" class="">
+
+                        <!-- <div class="row justify-content-center">
+                            <h3>Election Results Dashboard</h3>
+                        </div> -->
+
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label>Precinct ID</label>
+                                    <input type="number" class="form-control" formControlName="Precinct" required
+                                        pattern="[0-9]+" minlength="3" maxlength="3">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Election Date</label>
+                                    <input type="date" class="form-control" formControlName="eDate" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button Row -->
+                        <div class="row">
+                            <div class="update ml-auto mr-auto">
+                                <button type="submit" id="BallotButton" class="btn btn-primary btn-round" (click)="BallotButton(id)">Ballot Builder</button>
+                            </div>
+                            <div class="update ml-auto mr-auto">
+                                <button type="submit" id="ResultsButton" class="btn btn-primary btn-round"(click)="ResultsButton(id)">Election Results Dashboard</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

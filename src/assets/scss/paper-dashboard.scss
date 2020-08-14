@@ -1,0 +1,60 @@
+/*!
+
+=========================================================
+* Paper Dashboard Angular - v2.1.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/e-vote-angular
+* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/e-vote-angular/blob/master/LICENSE.md)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+
+@import "e-vote/variables";
+@import "e-vote/mixins";
+
+// Plugins CSS
+@import "e-vote/plugins/plugin-animate-bootstrap-notify";
+@import "e-vote/plugins/plugin-perfect-scrollbar";
+
+// Core CSS
+@import "e-vote/buttons";
+@import "e-vote/inputs";
+@import "e-vote/typography";
+@import "e-vote/misc";
+@import "e-vote/checkboxes-radio";
+
+// components
+@import "e-vote/navbar";
+@import "e-vote/page-header";
+@import "e-vote/dropdown";
+@import "e-vote/alerts";
+@import "e-vote/images";
+@import "e-vote/nucleo-outline";
+@import "e-vote/tables";
+@import "e-vote/sidebar-and-main-panel";
+@import "e-vote/footers";
+@import "e-vote/fixed-plugin";
+
+// cards
+@import "e-vote/cards";
+@import "e-vote/cards/card-plain";
+@import "e-vote/cards/card-chart";
+@import "e-vote/cards/card-user";
+@import "e-vote/cards/card-map";
+@import "e-vote/cards/card-stats";
+
+// angular differences
+@import "e-vote/angular/plugin-ngx-toastr";
+@import "e-vote/angular/sidebar-and-main-panel";
+@import "e-vote/angular/dropdown";
+@import "e-vote/angular/inputs";
+@import "e-vote/angular/fixed-plugin";
+
+@import "e-vote/responsive";

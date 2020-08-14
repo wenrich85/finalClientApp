@@ -1,0 +1,68 @@
+<!-- Display the Results Dashboard if there are results -->
+<div *ngIf="results">
+    <h1>Election Results</h1>
+    <h3>District: {{district}}</h3>
+
+    <!-- Make a new table for each seat -->
+    <div class="content" *ngFor="let seat of results.seats; index as i; ">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"> {{seat.seatName}} </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Candidate Name
+                                    </th>
+                                    <th>
+                                        Party
+                                    </th>
+                                    <th>
+                                        Votes
+                                    </th>
+                                </thead>
+                                <tbody>
+
+                                    <!-- Make a new row for each candidate -->
+                                    <tr *ngFor="let name of seat.candidates; index as j; ">
+                                        <td>
+                                            {{name.cFirstName}} {{name.cLastName }}
+                                        </td>
+                                        <td>
+                                            {{ name.party }}
+                                        </td>
+                                        <td>
+                                            17000
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Display a Message if there is no Results -->
+<div *ngIf="!results">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header ">
+                    <div class="row justify-content-center">
+                        <h2>Current Election Results</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

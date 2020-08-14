@@ -1,0 +1,125 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<style>
+  input:not(.disable):hover {
+    cursor: auto;
+  }
+
+  /* .candidate:hover {
+    border: 3px solid green;
+    border-radius: 25px
+  } */
+
+  .canidateSelector {
+    background-color: green;
+  }
+
+  radiobuttongroup {
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    vertical-align: middle;
+    /* margin-left:375px; */
+  }
+
+  /* input.radio {
+ padding:0 10px 0 0;
+ position:relative;
+ top:-2px;} */
+</style>
+
+<div class="container">
+  <div *ngIf="ballot">
+    <div class="card">
+
+      <br>
+      <div class="row justify-content-center">
+        <div *ngIf="isVoting">
+          <h2 style="font-weight: bold">Voter Ballot</h2>
+          <h3>Time Remaining: <div style="color: red; text-align: center;">{{minutes}}:{{seconds}}</div>
+          </h3>
+        </div>
+        <h2 *ngIf="isCreator" style="font-weight: bold">Ballot - Creator</h2>
+        <h2 *ngIf="IsApprover" style="font-weight: bold">Ballot - Approval</h2>
+      </div>
+
+      <!-- Straight Party Voting - Only in Voter Ballot -->
+      <radiobuttongroup *ngIf="isVoting">
+        <h4 class="row justify-content-center" style="font-size: 24px; font-weight: bold ">Straight Party Vote</h4>
+        <input type='radio' id='NospartyRadio' name='strparty' value='none' checked=true
+          (change)="onRadioChange($event.target.value)"> No Straight Party Vote <br>
+        <input type='radio' name='strparty' value='dem' style="margin-left: -13px;"
+          (change)="onRadioChange($event.target.value)"> Democrat <br>
+        <input type='radio' name='strparty' value='rep' (change)="onRadioChange($event.target.value)"> Republican <br>
+      </radiobuttongroup>
+
+      <br>
+
+
+      <div class="row justify-content-center" *ngFor="let seat of ballot.seats; index as i; ">
+        <div class="col-6 justify-content-center card">
+          <div class="row card-header">
+            <h6>{{seat.seatName}}:</h6>
+          </div>
+          <div class="row align-items-end">
+            <div class="col mb-0">Candidate</div>
+            <div class="col mr-2 mb-0">Party</div>
+          </div>
+          <div class="row m-1 candidate" *ngFor="let name of seat.candidates; index as j; "
+            (click)="stageVote($event, seat.seatID, name.candidateId, name.cFirstName, name.cLastName, seat.seatName)" id="{{ name.candidateId }}">
+            <div class="col  m-2 align-content-center" style="display:block; background-color: lightgray;">
+              <p>{{name.cFirstName}} {{name.cLastName }} </p>
+            </div>
+            <div class="col m-2" style="display:block; background-color: lightgray;">{{ name.party }}</div>
+          </div>
+        </div>
+      </div>
+
+      
+
+
+      <div *ngIf="isVoting">
+        <!-- Save Button -->
+        <div class="row justify-content-center">
+          <div class="justify-content-center">
+            <button type="submit" class="btn btn-primary btn-round" (click)="SubmitVote()">
+              Submit Vote</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- These Buttons are for the Ballot Builder - Creator-->
+      <div *ngIf="isCreator">
+        <!-- Save Button -->
+        <div class="row justify-content-center">
+          <div class="justify-content-center">
+            <button type="submit" class="btn btn-primary btn-round" (click)="SaveBallot()">
+              Save Ballot</button>
+          </div>
+          <!-- Approval Button -->
+          <div class="justify-content-center">
+            <button type="submit" class="btn btn-primary btn-round" (click)="Approval()">
+              Submit for Approval</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- These Buttons are for the Ballot Builder - Approver-->
+      <div *ngIf="IsApprover">
+        <!-- Save Button -->
+        <div class="row justify-content-center">
+          <div class="justify-content-center">
+            <button type="submit" class="btn btn-primary btn-round" (click)="ApproveBallot()">
+              Approve Ballot</button>
+          </div>
+          <!-- Approval Button -->
+          <div class="justify-content-center">
+            <button type="submit" class="btn btn-primary btn-round" (click)="RejectBallot()">
+              Reject Ballor</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="row" *ngIf="!ballot" >
+  <div class="col-md-12">
+    <div class="card ">
+      <div class="card-header ">
+        <div class="row mx-auto"> <img height=50 src="assets/img/logo.png">
+          <h1>EVOTE </h1>
+        </div>
+        <div class="card-body ">
+          <div id="Vote" class="map">Thank you for your interest in voting. The polls are currently not open. Please
+            come back at a later time and try again.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ballot ng-if="ballot" ></ballot>

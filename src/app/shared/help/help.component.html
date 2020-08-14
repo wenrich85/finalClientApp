@@ -1,0 +1,107 @@
+<style>
+    /* Outer Text Area */
+    p{
+        color: #004d39;
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    /* Inner Text Area */
+    .content {
+        color: #004d39;
+        font-size: 14px;
+        padding: 15px;
+        /* padding: 0 18px; */
+        display: none;
+        overflow: hidden;
+        background-color: #ccfff2;
+    }
+
+    /* Collaspable Button Style */
+    .collapsible {
+        background-color: #00cc99;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+
+    /* Collapsible Button when Clicked or Hover */
+    .active,
+    .collapsible:hover {
+        background-color: #009973;
+    }
+
+    /* Collapsible Button + Icon - Not Selected*/
+    .collapsible:after {
+        content: '\02795'; /* Unicode character for "plus" sign (+) */
+        font-size: 13px;
+        color: white;
+        float: right;
+        margin-left: 5px;
+    }
+
+    /* Collapsible Button - Icon - Selected*/
+    .active:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+    }
+</style>
+
+<div class="row justify-content-center">
+    <h2 style="font-weight: bold; color: #004d39">Frequently Asked Questions</h2>
+</div>
+
+<!-- <p>Application Instructions</p>
+<button type="button" class="collapsible">Authorization Page</button>
+<div class="content">
+    Enter Mobile Number, State Id Number, and Complete the Recaptcha.  A One-Time Pin will be sent to the Mobile Number you entered.
+</div>
+<br>
+<br> -->
+<p>Authorization</p>
+<button type="button" class="collapsible">Do I need to enter my Mobile Number?</button>
+<div class="content">
+    Yes, a one One-Time pin is generated and sent to your phone.
+</div>
+<p></p>
+<button type="button" class="collapsible">What if I do not have a mobile phone?</button>
+<div class="content">
+    You will need to come to the voter registration office in person.
+</div>
+<p></p>
+<button type="button" class="collapsible">What if I got a new mobile phone since I registred in the system?</button>
+<div class="content">
+    You will need to come to the voter registration office to vote.
+</div>
+<p></p>
+<button type="button" class="collapsible">Why am I being asked to enter my personal information? ie: address, social security number</button>
+<div class="content">
+    Yes, this information is used to generate questions needed to verify your identity and to mail a PIN to your home address.
+</div>
+<p></p>
+<button type="button" class="collapsible">Why is my picture being taken?</button>
+<div class="content">
+    The image taken during the registration process is used to verify your identity when your sign in to vote.
+</div>
+
+<br><br>
+
+<p>Voting</p>
+<button type="button" class="collapsible">What does straight party voting mean?</button>
+<div class="content">
+    In straight party vote, the candiate from the selected part for each seat is automatically selected.
+</div>
+<p></p>
+<button type="button" class="collapsible">Once I have selected straight party vote, am I able to chose candidates indvidually?</button>
+<div class="content">
+    Yes, ensure "No Straight Party Vote" is selected and you will be able to individually select candidates.
+</div>
+<p></p>
+<button type="button" class="collapsible">Can I change my voting selections once I have submitted my ballot?</button>
+<div class="content">
+    No, once you have submitted your ballot, you are unable to change your voting choices.
+</div>

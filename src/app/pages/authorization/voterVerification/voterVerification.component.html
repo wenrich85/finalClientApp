@@ -1,0 +1,45 @@
+<form [formGroup]="voterVerificationForm" class="needs-validation" (ngSubmit)="onSubmit()" novalidate>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-body ">
+                    <div id="card-body" class="justify-text-center">
+
+                        <!-- Row 1 - Mobile and ID -->
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label>Mobile Number</label>
+                                    <input type="text" class="form-control" formControlName="phoneNumber"
+                                        id="validationCustomUsername" required pattern="[0-9]+" minlength="10"
+                                        maxlength="10">
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-1">
+                                <div class="form-group">
+                                    <label>State ID Number (Required)</label>
+                                    <input type="text" class="form-control" formControlName="stateId" required
+                                        pattern="[0-9]+" minlength="10" maxlength="10">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Recaptcha-->
+                        <div class="row">
+                            <div class=" ml-auto mr-auto">
+                                <re-captcha siteKey={{siteKey}} formControlName="recaptcha"></re-captcha>
+                            </div>
+                        </div>
+
+                        <!-- Button Row -->
+                        <div class="row">
+                            <div class="update ml-auto mr-auto">
+                                <button type="submit" class="btn btn-primary btn-round">Get Verified!</button>
+                                <div *ngIf="showRequiredMessage" style="color:red;">Please Correct Errors.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

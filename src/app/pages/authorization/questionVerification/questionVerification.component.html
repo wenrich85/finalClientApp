@@ -1,0 +1,62 @@
+<ng-container *ngIf="showNextSteps">
+    <h1>Next Steps</h1>
+    <p>{{nextStepMessage}}</p>
+    <h4>Click Here to Retireve your Mailed OTP</h4>
+
+    <button (click)="getMailedOTP()" type="button" class="btn btn-primary btn-lg btn-block">Get Your OTP!</button>
+</ng-container>
+<ng-container *ngIf="!(showNextSteps)">
+<form [formGroup]="creditFileQuestionsForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header ">
+                    <div class="row justify-content-center">
+                        <h2>Credit File Questions</h2>
+                    </div>
+                </div>
+                <div class="card-body ">
+                    <div id="card-body" class="">
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div *ngFor="let question of questions.questions; let i=index;  trackBy: trackById"
+                                    [class.odd]="odd">
+                                    <div>
+                                        <div>({{i + 1}}) {{ question.question }} (Required)</div> 
+
+                                        <div>
+                                            <input type="radio" value="1"
+                                                formControlName="question{{i+1}}" />
+                                            <label>{{question.choice1}}</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" value="2"
+                                                 formControlName="question{{i+1}}" />
+                                            <label>{{question.choice2}}</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" value="3"
+                                                 formControlName="question{{i+1}}" />
+                                            <label>{{question.choice3}}</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" value="4"
+                                                formControlName="question{{i+1}}" />
+                                            <label>{{question.choice4}}</label>
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-round">Submit</button>
+                                <div *ngIf="showRequiredMessage" style="color:red;">Invalid. Please complete all required fields.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</ng-container>
